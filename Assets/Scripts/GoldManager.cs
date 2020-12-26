@@ -49,6 +49,7 @@ public class GoldManager : MonoBehaviour
     public void WavePrepStart()
     {
         unitPurchaseCt = 0;
+        UpdateUnitCostText();
     }
 
     public void PurchaseUnit()
