@@ -4,6 +4,7 @@ using Element = Warrior.Element;
 
 public class Road : MonoBehaviour
 {
+    private int totalCapacity;
     public int defenseCapacity = 20;    
     private const int MIN_ATK_CAPACITY = 1;
     public float unitSpace = 30;
@@ -18,21 +19,33 @@ public class Road : MonoBehaviour
     public Warrior cat;
     public bool Finished { get; private set; } = false;
 
+    private void Start()
+    {
+        totalCapacity = defenseCapacity + MIN_ATK_CAPACITY;
+    }
+
     private void Update()
     {
         if (Finished) return;
-        if (isBattling)
-        {
-            BattleUpdate();
-        }
-        else if (WaveManager.Instance.WaveStarted)
+        if (WaveManager.Instance.WaveStarted && (attackUnits.Count + defenseUnits.Count) < totalCapacity)
         {
             AddAtkUnit();
         }
+        if (isBattling)
+        {
+            BattleUpdate();
+        }        
     }
 
     private void BattleUpdate()
     {
+        if (defInBattle == null || defInBattle.Dead) // when battling the cat
+        {
+            isBattling = false;
+            GameOver();
+            return;
+        }
+
         float defDps = defInBattle.dps * Time.deltaTime;
         if (IsDefElementAdvantageous(defInBattle.element, atkInBattle.element)) defDps *= ((DefenseUnit)defInBattle).elementAdvDmgBoost;
         atkInBattle.HP -= defDps;
@@ -41,6 +54,11 @@ public class Road : MonoBehaviour
             Destroy(atkInBattle.gameObject);
             attackUnits.Dequeue();
             isBattling = false;
+            if (attackUnits.Count == 0)
+            {
+                Finished = true;
+                Debug.Log(name + " is finished.");
+            }
             return;
         }
 
@@ -48,10 +66,16 @@ public class Road : MonoBehaviour
         if (defInBattle.Dead)
         {
             Destroy(defInBattle.gameObject);
-            defenseUnits.Dequeue();
+            if (defenseUnits.Count > 0) defenseUnits.Dequeue(); // if not battling the cat
             isBattling = false;
             return;
         }
+    }
+
+    private void GameOver()
+    {
+        Finished = true;
+        Debug.Log("Cat is dead. Game over.");
     }
 
     public static bool IsDefElementAdvantageous(Element defElem, Element atkElem)
@@ -85,9 +109,7 @@ public class Road : MonoBehaviour
     {
         Enemy enemy = WaveManager.Instance.RandomlyPickEnemy();
         if (enemy == null)
-        {
-            Debug.Log(name + " is finished.");
-            Finished = true;
+        {   
             return;
         } 
 

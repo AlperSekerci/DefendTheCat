@@ -12,13 +12,23 @@ public class Warrior : MonoBehaviour
     public float dps = 100;
     public bool Dead { get; private set; } = false;
 
+    private bool hpSetToMaxHealthOnce = false;
     private float _hp = 0;
     public float HP
     {
-        get { return _hp; }
+        get 
+        {
+            if (!hpSetToMaxHealthOnce)
+            {
+                _hp = maxHealth;
+                hpSetToMaxHealthOnce = true;
+            }
+
+            return _hp; 
+        }
         set
         {
-            if (Dead) return;
+            if (Dead) return;           
             _hp = Mathf.Clamp(value, 0, maxHealth);
             hpBar.Value = HealthPerc;
             if (value <= 0)
