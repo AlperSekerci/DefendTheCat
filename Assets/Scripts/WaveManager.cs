@@ -29,6 +29,8 @@ public class WaveManager : MonoBehaviour
         }
     }
 
+    public int EnemyCount => wave.Count;
+
     private void Start()
     {
         Instance = this;
@@ -65,7 +67,7 @@ public class WaveManager : MonoBehaviour
         wave.Clear();
     }
 
-    public Enemy RandomlyPickEnemy()
+    public Enemy RandomlyPickEnemy(int road)
     {
         if (wave.Count == 0)
         {
@@ -75,6 +77,7 @@ public class WaveManager : MonoBehaviour
 
         int idx = Random.Range(0, wave.Count);
         Enemy enemy = wave[idx];
+        if (enemy.road != road) return null;
         wave.RemoveAt(idx);
         Debug.Log("Picked enemy: " + enemy);
         enemy.MakeVisible();

@@ -18,6 +18,7 @@ public class Road : MonoBehaviour
     public GameObject defenseUnitPrefab;
     public Warrior cat;
     public bool Finished { get; private set; } = false;
+    public int id;
 
     private void Start()
     {
@@ -34,7 +35,11 @@ public class Road : MonoBehaviour
         if (isBattling)
         {
             BattleUpdate();
-        }        
+        }
+        else
+        {
+            CheckNewBattle();
+        }
     }
 
     private void BattleUpdate()
@@ -54,7 +59,7 @@ public class Road : MonoBehaviour
             Destroy(atkInBattle.gameObject);
             attackUnits.Dequeue();
             isBattling = false;
-            if (attackUnits.Count == 0)
+            if (attackUnits.Count == 0 && WaveManager.Instance.EnemyCount == 0)
             {
                 Finished = true;
                 Debug.Log(name + " is finished.");
@@ -103,11 +108,12 @@ public class Road : MonoBehaviour
         }
 
         isBattling = true;
+        UpdateUnitPositions();
     }
 
     private void AddAtkUnit()
     {
-        Enemy enemy = WaveManager.Instance.RandomlyPickEnemy();
+        Enemy enemy = WaveManager.Instance.RandomlyPickEnemy(id);
         if (enemy == null)
         {   
             return;

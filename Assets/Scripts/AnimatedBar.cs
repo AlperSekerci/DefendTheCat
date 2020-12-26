@@ -25,37 +25,15 @@ public class AnimatedBar : MonoBehaviour
 
     private float mainMaxWidth;   
     public RectTransform main;
-    public RectTransform shadow;
-    public float shadowInterp = 3f;    
-    private bool started = false;
-
+    
     void Start()
     {
-        if (started) return;
-        started = true;
         mainMaxWidth = main.sizeDelta.x;       
     }
     
     void Update()
     {
-        float mainWidth = main.sizeDelta.x;
-        float mainPerc = mainWidth / mainMaxWidth;       
-
         float width = value * mainMaxWidth;
-        
-        if (value <= mainPerc)
-        {
-            main.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
-            float shadowWidth = shadow.sizeDelta.x;
-            float lerpedWidth = Mathf.Lerp(shadowWidth, width, Time.deltaTime * shadowInterp);
-            shadow.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, lerpedWidth);
-        }
-        else
-        {   
-            shadow.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
-            float shadowWidth = main.sizeDelta.x;
-            float lerpedWidth = Mathf.Lerp(shadowWidth, width, Time.deltaTime * shadowInterp);
-            main.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, lerpedWidth);
-        }        
+        main.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);   
     }
 }

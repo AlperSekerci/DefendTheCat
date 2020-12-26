@@ -47,13 +47,13 @@ MonoBehaviour:
   maxHealth: 100
   hpBar: {fileID: 990719160515006059}
   moveSmoothness: 15
-  dps: 1
+  dps: 200
   element: 0
   tokens:
   - {fileID: 21300000, guid: 424f2e3993a83224b90841d332a0cb83, type: 3}
   - {fileID: 21300000, guid: 8b743632ee9f303419e7424a4dca0420, type: 3}
   image: {fileID: 4233747471317450104}
-  elementAdvDmgBoost: 2
+  elementAdvDmgBoost: 3
 --- !u!1001 &4294740167809278713
 PrefabInstance:
   m_ObjectHideFlags: 0
