@@ -33,11 +33,6 @@ public class QiskitHandler : MonoBehaviour
         ConnectToQiskit();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space)) SampleCircuitOutputs();
-    }
-
     private void SetupMemoryStreams()
     {
         if (wStream != null) return; // already done
@@ -110,10 +105,6 @@ public class QiskitHandler : MonoBehaviour
 
     private void ReceiveData()
     {
-        socket.Receive(receiveBuffer);
-        for (int i = 0; i < receiveBuffer.Length; ++i)
-        {
-            Debug.Log("receive buffer " + i + ": " + receiveBuffer[i]);
-        }
+        socket.Receive(receiveBuffer);        
     }
 }

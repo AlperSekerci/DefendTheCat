@@ -5,9 +5,14 @@ public class InputManager : MonoBehaviour
 {
     private void Update()
     {
+        CheckMouseClick();
+    }
+
+    private void CheckMouseClick()
+    {
         if (!Input.GetMouseButtonDown((int)MouseButton.LeftMouse)) return;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if(Physics.Raycast(ray, out RaycastHit hit))
+        if (Physics.Raycast(ray, out RaycastHit hit))
         {
             GameObject obj = hit.collider.gameObject;
             // Debug.Log("hit " + obj.name);
