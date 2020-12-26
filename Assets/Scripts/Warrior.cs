@@ -81,4 +81,10 @@ public class Warrior : MonoBehaviour
 
         transform.position = new Vector3(transform.position.x, targetPos.y, targetPos.z);        
     }
+
+    public void Reset()
+    {
+        Dead = false;
+        HP = maxHealth;
+    }
 }

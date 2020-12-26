@@ -9,9 +9,13 @@ public class BlochSphere : MonoBehaviour
     public Transform pointTM;
     public bool rotationOn = true;
     public Vector3 defaultAngle = new Vector3(0, -90, 0);
-    
+    private float iniTheta; // ini = initial
+    private float iniPhi;
+
     private void Start()
     {
+        iniTheta = theta;
+        iniPhi = phi;
         //SetRandomPoint();
         UpdatePoint();
     }
@@ -26,6 +30,13 @@ public class BlochSphere : MonoBehaviour
     private void Update()
     {
         if (rotationOn) transform.Rotate(0, rotateSpeed * Time.deltaTime, 0);
+    }
+
+    public void Reset()
+    {
+        theta = iniTheta;
+        phi = iniPhi;
+        UpdatePoint();
     }
 
     // Source: http://www.vcpc.univie.ac.at/~ian/hotlist/qc/talks/bloch-sphere.pdf

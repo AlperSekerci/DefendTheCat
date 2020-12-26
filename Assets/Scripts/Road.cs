@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using Element = Warrior.Element;
 
@@ -17,7 +18,7 @@ public class Road : MonoBehaviour
     private bool isBattling = false;
     public GameObject defenseUnitPrefab;
     public Warrior cat;
-    public bool Finished { get; private set; } = false;
+    public bool Finished { get; set; } = false;
     public int id;
     
     private void Start()
@@ -27,8 +28,8 @@ public class Road : MonoBehaviour
 
     private void Update()
     {
-        if (Finished) return;
-        if (WaveManager.Instance.WaveStarted && (attackUnits.Count + defenseUnits.Count) < totalCapacity)
+        if (Finished || !WaveManager.Instance.WaveStarted) return;
+        if ((attackUnits.Count + defenseUnits.Count) < totalCapacity)
         {
             AddAtkUnit();
         }
@@ -39,6 +40,11 @@ public class Road : MonoBehaviour
         else
         {
             CheckNewBattle();
+        }
+
+        if (attackUnits.Count == 0 && WaveManager.Instance.EnemyCount == 0)
+        {
+            Finished = true;
         }
     }
 
@@ -70,7 +76,7 @@ public class Road : MonoBehaviour
         defInBattle.HP -= atkInBattle.dps * Time.deltaTime;
         if (defInBattle.Dead)
         {
-            Destroy(defInBattle.gameObject);
+            if (defInBattle != cat) Destroy(defInBattle.gameObject);
             if (defenseUnits.Count > 0) defenseUnits.Dequeue(); // if not battling the cat
             isBattling = false;
             return;
@@ -79,7 +85,7 @@ public class Road : MonoBehaviour
 
     private void GameOver()
     {
-        Finished = true;
+        //Finished = true;
         Debug.Log("Cat is dead. Game over.");
         WaveManager.Instance.GameOver();
     }
@@ -153,5 +159,21 @@ public class Road : MonoBehaviour
             unit.SetTargetPos(new Vector3(x, transform.position.y, transform.position.z));
             x -= unitSpace;
         }
+    }
+
+    public void Reset()
+    {
+        foreach (Warrior unit in defenseUnits)
+        {
+            Destroy(unit.gameObject);            
+        }
+        foreach (Warrior unit in attackUnits)
+        {
+            Destroy(unit.gameObject);
+        }
+        defenseUnits.Clear();
+        attackUnits.Clear();
+        Finished = false;
+        isBattling = false;
     }
 }

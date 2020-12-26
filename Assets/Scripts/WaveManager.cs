@@ -8,7 +8,7 @@ public class WaveManager : MonoBehaviour
     public static WaveManager Instance { get; private set; }
     private List<Enemy> wave = new List<Enemy>();
     public int roadCount = 2;
-    public GameObject enemyPrefab;    
+    public GameObject enemyPrefab;
     public Button startWaveBtn;
     public Text waveInfoText;
     public Text waveNumText;
@@ -66,7 +66,11 @@ public class WaveManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (wave.Count == 0)
+        if (!WaveStarted)
+        {
+            waveInfoText.text = "preparing";
+        }
+        else if (wave.Count == 0)
         {
             waveInfoText.text = "";
         }
@@ -89,12 +93,43 @@ public class WaveManager : MonoBehaviour
         }
 
         if (!finished) return;
-        Debug.Log("Both roads are finished.");
+        Debug.Log("Both roads are cleared successfully.");
+        PrepareNextWave();
+    }
+
+    private void PrepareNextWave()
+    {
+        WaveStarted = false;
+        WaveNumber++;
+        waveInfoText.text = "preparing";
+        foreach (Road road in roads) road.Finished = false;
+        GoldManager.Instance.WavePrepStart();
+        foreach (BlochSphere qbit in QiskitHandler.Instance.qbits)
+        {
+            qbit.SetRandomPoint();
+        }
     }
 
     public void GameOver()
     {
-        Debug.Log("wave manager game over");
+        survivedWavesText.text = (WaveNumber - 1).ToString();
+        gameOverObj.SetActive(true);
+    }
+
+    public void RestartGame()
+    {
+        Debug.Log("restart");
+        gameOverObj.SetActive(false);
+        WaveNumber = 1;
+        ClearWave();
+        WaveStarted = false;
+        GoldManager.Instance.Reset();
+        foreach (Road road in roads) road.Reset();
+        roads[0].cat.Reset();
+        foreach (BlochSphere qbit in QiskitHandler.Instance.qbits)
+        {
+            qbit.Reset();
+        }
     }
 
     public void CreateWave(byte[] enemyCounts) // road & element combined

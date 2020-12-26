@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18634a1938c712d4bb70b7a641adae31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 150
   hpBar: {fileID: 990719160515006059}
   moveSmoothness: 15
   dps: 400
