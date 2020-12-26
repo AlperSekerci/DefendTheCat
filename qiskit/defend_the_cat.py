@@ -1,14 +1,27 @@
-from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit, execute, Aer
 # arbitrary state: https://quantumcomputing.stackexchange.com/questions/1413/how-to-create-an-arbitrary-state-in-qiskit-for-a-local-qasm-simulator
+from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit, execute, Aer
+import numpy as np
 
-bits = ['0', '1']
-all_inputs = []
-for a in bits:
-    for b in bits:
-        for c in bits:
-            for d in bits:
-                all_inputs.append(a + b + c + d)
 
+def sample_outputs(qbit_data, circuit_data):
+    qbit_count = qbit_data.shape[0]
+    amplitudes = np.empty((qbit_count, 2), dtype=np.complex)
+    for qbit_idx in range(qbit_count):
+        amplitudes[qbit_idx] = get_amplitudes(*qbit_data[qbit_idx])
+        print("amplitudes of {}: {}".format(qbit_idx, amplitudes[qbit_idx]))
+        test_amplitudes(amplitudes[qbit_idx])
+
+def get_amplitudes(theta, phi): # from bloch sphere
+    amp = np.empty(2, dtype=np.complex)
+    half_theta = theta * 0.5
+    amp[0] = np.cos(half_theta)
+    amp[1] = (np.cos(phi) + 1j * np.sin(phi)) * np.sin(half_theta)
+    return amp
+
+def test_amplitudes(amp):
+    print(amp[0] * np.conjugate(amp[0]) + amp[1] * np.conjugate(amp[1]))
+
+"""
 def color2(qreg, circuit):
     # (a)
     circuit.cx(qreg[0], qreg[5])
@@ -41,3 +54,4 @@ for input in all_inputs:
     counts = job.result().get_counts(circuit)
     for outcome in counts:
         print("(input vertices) |{}> --> |{}> (output)".format(input, outcome))
+"""

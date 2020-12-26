@@ -2,6 +2,7 @@
 using System.IO;
 using System.Net.Sockets;
 using UnityEngine;
+using Gates = AgentTeam.Gates;
 
 public class QiskitHandler : MonoBehaviour
 {
@@ -30,6 +31,11 @@ public class QiskitHandler : MonoBehaviour
     private void Start()
     {
         ConnectToQiskit();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space)) SampleCircuitOutputs();
     }
 
     private void SetupMemoryStreams()
@@ -77,11 +83,36 @@ public class QiskitHandler : MonoBehaviour
 
     private void SendData()
     {
-        
+        wStream.Position = 0;
+        WriteQBits();
+        WriteCircuit();
+        socket.Send(wStream.GetBuffer());
+    }
+
+    private void WriteQBits()
+    {
+        foreach (BlochSphere qbit in qbits)
+        {
+            writer.Write(qbit.theta);
+            writer.Write(qbit.phi);
+        }
+    }
+
+    private void WriteCircuit()
+    {
+        foreach (AgentTeam team in agentTeams)
+        {
+            foreach (Gates gate in team.gates)
+            {
+                writer.Write((byte)gate);
+            }            
+        }
     }
 
     private void ReceiveData()
     {
-        
+        //rStream.Position = 0;
+        //socket.Receive(receiveBuffer);
+        // TODO: Read
     }
 }
