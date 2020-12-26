@@ -7,13 +7,11 @@ class UnityHandler:
                  port=15920,
                  team_count=4,
                  qbit_count=2,
-                 sample_size=100
                  ):
         self.team_count = team_count
         self.qbit_count = qbit_count
         self.each_qbit_float_ct = 2 # theta and phi of bloch sphere
         self.float_size = 4
-        self.sample_size = sample_size
 
         self.state_bytes = self.float_size * self.qbit_count * self.each_qbit_float_ct
         self.circuit_bytes = self.team_count * self.qbit_count

@@ -6,6 +6,8 @@ using Gates = AgentTeam.Gates;
 
 public class QiskitHandler : MonoBehaviour
 {
+    public static QiskitHandler Instance { get; private set; }
+
     public string host = "127.0.0.1";
     public int port = 15920;    
     private Socket socket;
@@ -13,23 +15,21 @@ public class QiskitHandler : MonoBehaviour
 
     public BlochSphere[] qbits;
     public AgentTeam[] agentTeams;
-    public int sampleSize = 100;
-
+    
     #region Memory & Data Info
     private MemoryStream wStream; // w = write
-    private BinaryWriter writer; 
-    private MemoryStream rStream; // r = read
-    private BinaryReader reader;
+    private BinaryWriter writer;     
     private int stateBytes;
     private int circuitBytes;
     private int totalSendBytes;
     private int receiveBytes;
     private byte[] receiveBuffer;
-    private const int EACH_QBIT_FLOAT_CT = 2;
+    private const int EACH_QBIT_FLOAT_CT = 2;    
     #endregion
 
     private void Start()
     {
+        Instance = this;
         ConnectToQiskit();
     }
 
@@ -44,12 +44,10 @@ public class QiskitHandler : MonoBehaviour
         stateBytes = sizeof(float) * qbits.Length * EACH_QBIT_FLOAT_CT;
         circuitBytes = agentTeams.Length * qbits.Length;
         totalSendBytes = stateBytes + circuitBytes;
-        receiveBytes = sampleSize;
-        receiveBuffer = new byte[receiveBytes];
+        receiveBytes = Mathf.RoundToInt(Mathf.Pow(2, qbits.Length));
+        receiveBuffer = new byte[receiveBytes];        
         wStream = new MemoryStream(totalSendBytes);
-        writer = new BinaryWriter(wStream);
-        rStream = new MemoryStream(receiveBuffer);
-        reader = new BinaryReader(rStream);
+        writer = new BinaryWriter(wStream);        
     }
 
     private void ConnectToQiskit()
@@ -69,16 +67,17 @@ public class QiskitHandler : MonoBehaviour
         }
     }
 
-    public void SampleCircuitOutputs()
+    public byte[] SampleCircuitOutputs()
     {
         if (!connected)
         {
             Debug.LogError("QiskitHandler: Not connected to the qiskit server yet.");
-            return;
+            return null;
         }
 
         SendData();
         ReceiveData();
+        return receiveBuffer;
     }
 
     private void SendData()
@@ -111,8 +110,10 @@ public class QiskitHandler : MonoBehaviour
 
     private void ReceiveData()
     {
-        //rStream.Position = 0;
-        //socket.Receive(receiveBuffer);
-        // TODO: Read
+        socket.Receive(receiveBuffer);
+        for (int i = 0; i < receiveBuffer.Length; ++i)
+        {
+            Debug.Log("receive buffer " + i + ": " + receiveBuffer[i]);
+        }
     }
 }

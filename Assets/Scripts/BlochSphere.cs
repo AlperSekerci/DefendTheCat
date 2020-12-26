@@ -8,10 +8,12 @@ public class BlochSphere : MonoBehaviour
     public float phi = 0;
     public Transform pointTM;
     public bool rotationOn = true;
-
+    public Vector3 defaultAngle = new Vector3(0, -90, 0);
+    
     private void Start()
     {
-        SetRandomPoint();
+        //SetRandomPoint();
+        UpdatePoint();
     }
 
     public void SetRandomPoint()
@@ -45,5 +47,6 @@ public class BlochSphere : MonoBehaviour
     public void OnClick()
     {
         rotationOn = !rotationOn;
+        transform.eulerAngles = defaultAngle;
     }
 }

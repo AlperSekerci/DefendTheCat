@@ -189,10 +189,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8e216388dd0ae741812e9cda18b72d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 100
+  rotateSpeed: 150
   theta: 0
   phi: 0
   pointTM: {fileID: 5919750973911678052}
+  rotationOn: 1
+  defaultAngle: {x: 0, y: 90, z: 0}
 --- !u!135 &428220270139775544
 SphereCollider:
   m_ObjectHideFlags: 0

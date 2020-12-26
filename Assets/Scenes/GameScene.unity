@@ -160,7 +160,6 @@ MonoBehaviour:
   - {fileID: 1863661923}
   - {fileID: 1624469835}
   - {fileID: 998659522}
-  sampleSize: 100
 --- !u!4 &34280065
 Transform:
   m_ObjectHideFlags: 0
@@ -241,6 +240,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: QBit_Elem
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919750974954368942, guid: 01c6da8059aaf6343af5de800a12b67d,
+        type: 3}
+      propertyPath: theta
+      value: 1.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919750975771332552, guid: 01c6da8059aaf6343af5de800a12b67d,
+        type: 3}
+      propertyPath: m_Text
+      value: Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919750975771332552, guid: 01c6da8059aaf6343af5de800a12b67d,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.8396226
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919750975771332552, guid: 01c6da8059aaf6343af5de800a12b67d,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919750975771332552, guid: 01c6da8059aaf6343af5de800a12b67d,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.041080475
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919750975841022696, guid: 01c6da8059aaf6343af5de800a12b67d,
+        type: 3}
+      propertyPath: m_Text
+      value: Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919750975841022696, guid: 01c6da8059aaf6343af5de800a12b67d,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919750975841022696, guid: 01c6da8059aaf6343af5de800a12b67d,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.43299475
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919750975841022696, guid: 01c6da8059aaf6343af5de800a12b67d,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.7924528
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01c6da8059aaf6343af5de800a12b67d, type: 3}
@@ -328,6 +372,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: QBit_Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919750974954368942, guid: 01c6da8059aaf6343af5de800a12b67d,
+        type: 3}
+      propertyPath: testing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919750974954368942, guid: 01c6da8059aaf6343af5de800a12b67d,
+        type: 3}
+      propertyPath: theta
+      value: 3.14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01c6da8059aaf6343af5de800a12b67d, type: 3}
