@@ -23,7 +23,7 @@ public class WaveManager : MonoBehaviour
             Element element = (Element)(enemyType % (int)Element.Count);
 
             for (int i = 0; i < enemyCounts[enemyType]; ++i)
-            {
+            {   
                 GameObject enemyObj = Instantiate(enemyPrefab, transform);
                 Enemy enemy = enemyObj.GetComponent<Enemy>();
                 enemy.road = road;
@@ -63,7 +63,8 @@ public class WaveManager : MonoBehaviour
     public void StartWave()
     {
         CreateWave(QiskitHandler.Instance.SampleCircuitOutputs());
-        for (int i = 0; i < wave.Count; ++i)
+        int waveCt = wave.Count;
+        for (int i = 0; i < waveCt; ++i)
         {
             RandomlyPickEnemy();
         }
