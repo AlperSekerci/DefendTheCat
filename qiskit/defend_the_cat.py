@@ -3,6 +3,11 @@ from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit, execute, 
 import numpy as np
 
 
+IDENTITY = 0
+NOT = 1
+HADAMARD = 2
+SWAP = 3
+
 def sample_outputs(qbit_data, circuit_data, sample_size=100):
     qbit_count = qbit_data.shape[0]
     amplitudes = np.empty((qbit_count, 2), dtype=np.complex)
@@ -20,7 +25,17 @@ def sample_outputs(qbit_data, circuit_data, sample_size=100):
     qc = QuantumCircuit(qreg, creg)
     qc.initialize(combined_amplitudes, [qreg[i] for i in range(qbit_count)])
 
-    # TODO: apply gates
+    team_count = circuit_data.shape[0]
+    for team_idx in range(team_count):
+        for q_idx in range(qbit_count):
+            op = circuit_data[team_idx, q_idx]
+            if op == IDENTITY: continue
+            elif op == NOT: qc.x(qreg[q_idx])
+            elif op == HADAMARD: qc.h(qreg[q_idx])
+            elif op == SWAP:
+                qc.swap(qreg[0], qreg[1]) # TODO: only works for 2-qbit
+                break
+
     qc.measure(qreg, creg)
     print(qc.draw(output='text'))
 

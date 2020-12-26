@@ -96,10 +96,12 @@ public class QiskitHandler : MonoBehaviour
     {
         foreach (AgentTeam team in agentTeams)
         {
-            foreach (Gates gate in team.gates)
+            int gateCount = team.gates.Length;
+            for (int i = gateCount - 1; i >= 0; --i)
             {
+                int gate = (int)team.gates[i];
                 writer.Write((byte)gate);
-            }            
+            }                    
         }
     }
 
