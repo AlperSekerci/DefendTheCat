@@ -28,11 +28,13 @@ public class WaveManager : MonoBehaviour
             {
                 startWaveBtn.interactable = false;
                 foreach (Button btn in purchaseBtns) btn.interactable = false;
+                foreach (AgentTeam team in QiskitHandler.Instance.agentTeams) team.SetEnable(false);
             }
             else
             {
                 startWaveBtn.interactable = true;
                 foreach (Button btn in purchaseBtns) btn.interactable = true;
+                foreach (AgentTeam team in QiskitHandler.Instance.agentTeams) team.SetEnable(true);
             }
         }
     }

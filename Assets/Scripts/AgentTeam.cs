@@ -63,4 +63,17 @@ public class AgentTeam : MonoBehaviour
 
         OnClickAgent(-1);
     }
+
+    public void SetEnable(bool enabled)
+    {
+        if (enabled)
+        {
+            foreach (Button btn in agentButtons) btn.interactable = true;
+        }
+        else
+        {
+            foreach (Button btn in agentButtons) btn.interactable = false;
+            OnClickAgent(-1);
+        }
+    }
 }
