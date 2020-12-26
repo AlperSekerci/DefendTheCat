@@ -1,19 +1,17 @@
 ﻿using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : Warrior
 {
     public int road;
-    
-    public enum Element
-    {
-        Fire,
-        Water,
-        Count
-    }
-    public Element element;
+    public GameObject canvas;
 
     public override string ToString()
     {
         return "Road: " + (road + 1) + ", Element: " + element;
+    }
+
+    public void MakeVisible()
+    {
+        canvas.SetActive(true);
     }
 }

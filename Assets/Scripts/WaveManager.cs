@@ -1,13 +1,33 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using Element = Enemy.Element;
+using UnityEngine.UI;
 
 public class WaveManager : MonoBehaviour
 {
-    public WaveManager Instance { get; private set; }
+    public static WaveManager Instance { get; private set; }
     private List<Enemy> wave = new List<Enemy>();
     public int roadCount = 2;
-    public GameObject enemyPrefab;
+    public GameObject enemyPrefab;    
+    public Button startWaveBtn;
+
+    private bool _waveStarted = false;
+    public bool WaveStarted
+    {
+        get { return _waveStarted; }
+        set
+        {
+            _waveStarted = value;
+            if (value)
+            {
+                startWaveBtn.interactable = false;
+            }
+            else
+            {
+                startWaveBtn.interactable = true;
+            }
+        }
+    }
 
     private void Start()
     {
@@ -27,7 +47,7 @@ public class WaveManager : MonoBehaviour
                 GameObject enemyObj = Instantiate(enemyPrefab, transform);
                 Enemy enemy = enemyObj.GetComponent<Enemy>();
                 enemy.road = road;
-                enemy.element = element;
+                enemy.SetElement(element);
                 enemy.name = "Enemy[Road_" + (road + 1) + "][Element_" + element + "]";
                 wave.Add(enemy);
             }
@@ -49,7 +69,7 @@ public class WaveManager : MonoBehaviour
     {
         if (wave.Count == 0)
         {
-            Debug.LogWarning("WaveManager: There are no enemies in the wave.");
+            // Debug.LogWarning("WaveManager: There are no enemies in the wave.");
             return null;
         }
 
@@ -57,16 +77,19 @@ public class WaveManager : MonoBehaviour
         Enemy enemy = wave[idx];
         wave.RemoveAt(idx);
         Debug.Log("Picked enemy: " + enemy);
+        enemy.MakeVisible();
         return enemy;
     }
 
     public void StartWave()
     {
-        CreateWave(QiskitHandler.Instance.SampleCircuitOutputs());
-        int waveCt = wave.Count;
-        for (int i = 0; i < waveCt; ++i)
+        if (WaveStarted)
         {
-            RandomlyPickEnemy();
+            Debug.LogWarning("WaveManager: Wave is already started.");
+            return;
         }
+
+        CreateWave(QiskitHandler.Instance.SampleCircuitOutputs());
+        WaveStarted = true;        
     }
 }
