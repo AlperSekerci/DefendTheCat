@@ -10,6 +10,12 @@ public class WaveManager : MonoBehaviour
     public int roadCount = 2;
     public GameObject enemyPrefab;    
     public Button startWaveBtn;
+    public Text waveInfoText;
+    public Text waveNumText;
+    public Button[] purchaseBtns;
+    public Road[] roads;
+    public GameObject gameOverObj;
+    public Text survivedWavesText;
 
     private bool _waveStarted = false;
     public bool WaveStarted
@@ -21,11 +27,24 @@ public class WaveManager : MonoBehaviour
             if (value)
             {
                 startWaveBtn.interactable = false;
+                foreach (Button btn in purchaseBtns) btn.interactable = false;
             }
             else
             {
                 startWaveBtn.interactable = true;
+                foreach (Button btn in purchaseBtns) btn.interactable = true;
             }
+        }
+    }
+
+    private int _waveNum = 1;
+    public int WaveNumber
+    {
+        get { return _waveNum; }
+        private set
+        {
+            _waveNum = value;
+            waveNumText.text = "Wave " + value;
         }
     }
 
@@ -34,6 +53,48 @@ public class WaveManager : MonoBehaviour
     private void Start()
     {
         Instance = this;
+        waveInfoText.text = "";
+    }
+
+    private void Update()
+    {
+        if (WaveStarted)
+        {
+            CheckRoads();
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (wave.Count == 0)
+        {
+            waveInfoText.text = "";
+        }
+        else
+        {
+            waveInfoText.text = wave.Count + " enemies left.";
+        }
+    }
+
+    private void CheckRoads()
+    {
+        bool finished = true;
+        foreach (Road road in roads)
+        {
+            if (!road.Finished)
+            {
+                finished = false;
+                break;
+            }
+        }
+
+        if (!finished) return;
+        Debug.Log("Both roads are finished.");
+    }
+
+    public void GameOver()
+    {
+        Debug.Log("wave manager game over");
     }
 
     public void CreateWave(byte[] enemyCounts) // road & element combined

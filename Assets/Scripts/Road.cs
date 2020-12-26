@@ -19,7 +19,7 @@ public class Road : MonoBehaviour
     public Warrior cat;
     public bool Finished { get; private set; } = false;
     public int id;
-
+    
     private void Start()
     {
         totalCapacity = defenseCapacity + MIN_ATK_CAPACITY;
@@ -81,6 +81,7 @@ public class Road : MonoBehaviour
     {
         Finished = true;
         Debug.Log("Cat is dead. Game over.");
+        WaveManager.Instance.GameOver();
     }
 
     public static bool IsDefElementAdvantageous(Element defElem, Element atkElem)
@@ -127,11 +128,13 @@ public class Road : MonoBehaviour
     public void AddDefenseUnit(int element)
     {
         if (defenseUnits.Count >= defenseCapacity) return;
+        if (!GoldManager.Instance.CanBuyUnit()) return;
         GameObject defUnitObj = Instantiate(defenseUnitPrefab, transform);
         DefenseUnit unit = defUnitObj.GetComponent<DefenseUnit>();
         unit.SetElement((Element)element);
         defenseUnits.Enqueue(unit);
         UpdateUnitPositions();
+        GoldManager.Instance.PurchaseUnit();
     }
 
     public void UpdateUnitPositions()
