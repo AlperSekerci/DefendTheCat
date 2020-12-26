@@ -1,5 +1,5 @@
-# Edited the code I wrote for assignment 2.
 from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit, execute, Aer
+# arbitrary state: https://quantumcomputing.stackexchange.com/questions/1413/how-to-create-an-arbitrary-state-in-qiskit-for-a-local-qasm-simulator
 
 bits = ['0', '1']
 all_inputs = []
