@@ -1,7 +1,8 @@
 from unity_handler import UnityHandler
 from defend_the_cat import sample_outputs
 
-unity_handler = UnityHandler()
+PORT = 17920
+unity_handler = UnityHandler(port=PORT)
 while True:
     try:
         unity_handler.receive()
@@ -9,4 +10,4 @@ while True:
         unity_handler.send(results)
     except:
         print("got exception")
-        unity_handler = UnityHandler()
+        unity_handler.reset()

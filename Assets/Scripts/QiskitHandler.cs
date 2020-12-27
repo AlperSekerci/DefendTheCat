@@ -24,7 +24,11 @@ public class QiskitHandler : MonoBehaviour
     private int totalSendBytes;
     private int receiveBytes;
     private byte[] receiveBuffer;
-    private const int EACH_QBIT_FLOAT_CT = 2;    
+    private const int EACH_QBIT_FLOAT_CT = 2;
+    #endregion
+
+    #region UI
+    public GameObject errorObj;
     #endregion
 
     private void Start()
@@ -59,6 +63,7 @@ public class QiskitHandler : MonoBehaviour
         catch (Exception e)
         {
             Debug.LogError("[QiskitHandler] " + e + ": " + e.StackTrace);
+            errorObj.SetActive(true);
         }
     }
 

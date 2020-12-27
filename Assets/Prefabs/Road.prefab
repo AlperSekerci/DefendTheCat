@@ -49,6 +49,8 @@ MonoBehaviour:
   unitOffset: -0.6
   defenseUnitPrefab: {fileID: 4294740168209359392, guid: d7d9cb5f91a9c774cacfb05e798b85f9,
     type: 3}
+  cat: {fileID: 0}
+  id: 0
 --- !u!1 &2726548058525880059
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,7 +60,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6935844840813857935}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: UnitSelection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +101,7 @@ GameObject:
   - component: {fileID: 9149062826095425019}
   - component: {fileID: 5132452720433602685}
   - component: {fileID: 6172469687489690329}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +228,7 @@ GameObject:
   - component: {fileID: 8666742230115067556}
   - component: {fileID: 6889312890288715644}
   - component: {fileID: 6845804270400468084}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,7 +302,7 @@ GameObject:
   - component: {fileID: 7735654006791985239}
   - component: {fileID: 6770146033578597498}
   - component: {fileID: 2278583952057213132}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -400,7 +402,7 @@ GameObject:
   - component: {fileID: 7819517044454526998}
   - component: {fileID: 6252232076137747653}
   - component: {fileID: 5168120720587632936}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -527,7 +529,7 @@ GameObject:
   - component: {fileID: 8291795271729461575}
   - component: {fileID: 3958936620708636133}
   - component: {fileID: 8364015907543323491}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}

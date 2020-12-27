@@ -37,9 +37,9 @@ public class AgentTeam : MonoBehaviour
             return;
         }
 
-        Vector3 selectBoardPos = selectBoardObj.transform.position;
+        /*Vector3 selectBoardPos = selectBoardObj.transform.position;
         selectBoardPos.y = agentButtons[idx].transform.position.y;
-        selectBoardObj.transform.position = selectBoardPos;
+        selectBoardObj.transform.position = selectBoardPos;*/
         selectBoardObj.SetActive(true);
         selectedAgentIdx = idx;
     }

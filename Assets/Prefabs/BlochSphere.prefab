@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5919750973911678055}
   - component: {fileID: 5919750973911678054}
   - component: {fileID: 5919750973911678053}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 5919750974954368943}
   - component: {fileID: 5919750974954368942}
   - component: {fileID: 428220270139775544}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BlochSphere
   m_TagString: BlochSphere
   m_Icon: {fileID: 0}
@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 5919750975551303337}
   - component: {fileID: 5919750975551303336}
   - component: {fileID: 5919750975551303343}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: YAxis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 5919750975771332559}
   - component: {fileID: 5919750975771332553}
   - component: {fileID: 5919750975771332552}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (0)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,7 +391,7 @@ GameObject:
   - component: {fileID: 5919750975789898063}
   - component: {fileID: 5919750975789898062}
   - component: {fileID: 5919750975789898061}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -490,7 +490,7 @@ GameObject:
   - component: {fileID: 5919750975841022703}
   - component: {fileID: 5919750975841022697}
   - component: {fileID: 5919750975841022696}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

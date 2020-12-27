@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3119869457586348524}
   - component: {fileID: 5152051142690082169}
   - component: {fileID: 2256140189522108684}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 8182482921682780233}
   - component: {fileID: 5389002542769836595}
   - component: {fileID: 5381118053374941899}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 1016753931893441477}
   - component: {fileID: 2450821005718198448}
   - component: {fileID: 3894079128852857725}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: UnitCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 7636959184986953799}
   - component: {fileID: 7044722449698997016}
   - component: {fileID: 97022595169918849}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Token
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,7 +329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8376805737585276882}
   - component: {fileID: 3901883910269971602}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: HPBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
