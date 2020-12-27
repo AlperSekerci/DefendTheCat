@@ -1,9 +1,6 @@
 import socket
 import numpy as np
-import time
 
-
-SHUTDOWN_WAIT_TIME = 2
 
 class UnityHandler:
     def __init__(self,
@@ -48,16 +45,18 @@ class UnityHandler:
 
     def reset(self):
         if self.sock is not None:
-            print("shutting down the socket")
-            self.sock.shutdown(socket.SHUT_RDWR)
-            self.sock.close()
-            print("will wait {} seconds")
-            time.sleep(SHUTDOWN_WAIT_TIME)
+            try:
+                print("shutting down the socket")
+                self.sock.shutdown(socket.SHUT_RDWR)
+                self.sock.close()
+            except:
+                print("some error during socket shutdown")
         self.__start_listening()
 
     def __start_listening(self):
         print("will start listening")
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         server_address = ('', self.port)
         print('starting up on \'{}\' port {}'.format(*server_address))
         self.sock.bind(server_address)

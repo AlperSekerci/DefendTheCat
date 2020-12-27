@@ -37,7 +37,7 @@ def sample_outputs(qbit_data, circuit_data, sample_size=100):
                 break
 
     qc.measure(qreg, creg)
-    print(qc.draw(output='text'))
+    #print(qc.draw(output='text'))
 
     job = execute(qc, Aer.get_backend('qasm_simulator'), shots=sample_size)
     counts = job.result().get_counts(qc)

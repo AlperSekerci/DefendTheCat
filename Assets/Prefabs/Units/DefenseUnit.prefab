@@ -50,8 +50,8 @@ MonoBehaviour:
   dps: 400
   element: 0
   tokens:
-  - {fileID: 21300000, guid: 424f2e3993a83224b90841d332a0cb83, type: 3}
-  - {fileID: 21300000, guid: 8b743632ee9f303419e7424a4dca0420, type: 3}
+  - {fileID: 21300000, guid: 05ec5f89527a24f4bad8c8439724e561, type: 3}
+  - {fileID: 21300000, guid: 896e40010fab9c541a29931d4c4e6bb7, type: 3}
   image: {fileID: 4233747471317450104}
   elementAdvDmgBoost: 2
 --- !u!1001 &4294740167809278713

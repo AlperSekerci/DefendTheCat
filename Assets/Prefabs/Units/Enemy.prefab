@@ -50,8 +50,8 @@ MonoBehaviour:
   dps: 40
   element: 0
   tokens:
-  - {fileID: 21300000, guid: 945f8f738c6449f4bb87d771e5254b5c, type: 3}
-  - {fileID: 21300000, guid: 58ea25fc2529e884fb024e3a5e8a02f9, type: 3}
+  - {fileID: 21300000, guid: ed3994015132f474c95048f7eb96a2f0, type: 3}
+  - {fileID: 21300000, guid: ad6233302fc69254d90bde687d38acaf, type: 3}
   image: {fileID: 4116890076965423949}
   road: 0
   canvas: {fileID: 8239683980100564668}

@@ -382,7 +382,7 @@ PrefabInstance:
     - target: {fileID: 512100202905812735, guid: 35f34ed9401cbc844bf61e58b67b6ce1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 375
+      value: 465
       objectReference: {fileID: 0}
     - target: {fileID: 512100202905812735, guid: 35f34ed9401cbc844bf61e58b67b6ce1,
         type: 3}
@@ -883,10 +883,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_HighlightedColor: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 1}
+    m_PressedColor: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 1}
+    m_SelectedColor: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 1}
+    m_DisabledColor: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -959,6 +959,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4233747471317450104, guid: d7d9cb5f91a9c774cacfb05e798b85f9,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0fa2f47bd19c83149893eacc02061332,
+        type: 3}
     - target: {fileID: 4294740168209359392, guid: d7d9cb5f91a9c774cacfb05e798b85f9,
         type: 3}
       propertyPath: m_Name
@@ -1278,6 +1284,79 @@ MonoBehaviour:
   - {fileID: 1971711028}
   gameOverObj: {fileID: 1669745010}
   survivedWavesText: {fileID: 1189830931}
+--- !u!1 &1123802658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1123802659}
+  - component: {fileID: 1123802661}
+  - component: {fileID: 1123802660}
+  m_Layer: 5
+  m_Name: DogCommander
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1123802659
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123802658}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -745.20013}
+  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1579932965}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 397, y: 34}
+  m_SizeDelta: {x: 400, y: 400}
+  m_Pivot: {x: 0, y: 0.5}
+--- !u!114 &1123802660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123802658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.3137255}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 44d746e51bcb7c745a12934222098363, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1123802661
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123802658}
+  m_CullTransparentMesh: 0
 --- !u!1 &1189830929
 GameObject:
   m_ObjectHideFlags: 0
@@ -1636,7 +1715,7 @@ PrefabInstance:
     - target: {fileID: 512100202905812735, guid: 35f34ed9401cbc844bf61e58b67b6ce1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 375
+      value: 465
       objectReference: {fileID: 0}
     - target: {fileID: 512100202905812735, guid: 35f34ed9401cbc844bf61e58b67b6ce1,
         type: 3}
@@ -1981,6 +2060,7 @@ RectTransform:
   m_LocalScale: {x: 0.009259259, y: 0.009259259, z: 0.009259259}
   m_Children:
   - {fileID: 1558715321}
+  - {fileID: 1123802659}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1999,7 +2079,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1585252967}
   - component: {fileID: 1585252966}
-  - component: {fileID: 1585252965}
   m_Layer: 0
   m_Name: WorldUICam
   m_TagString: MainCamera
@@ -2007,14 +2086,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1585252965
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1585252964}
-  m_Enabled: 1
 --- !u!20 &1585252966
 Camera:
   m_ObjectHideFlags: 0
@@ -2528,7 +2599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.9411765}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2823,7 +2894,7 @@ PrefabInstance:
     - target: {fileID: 512100202905812735, guid: 35f34ed9401cbc844bf61e58b67b6ce1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 375
+      value: 465
       objectReference: {fileID: 0}
     - target: {fileID: 512100202905812735, guid: 35f34ed9401cbc844bf61e58b67b6ce1,
         type: 3}
@@ -2926,7 +2997,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1926635773}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.65, y: 1.19, z: -2.48}
+  m_LocalPosition: {x: -7.13, y: 1.19, z: -2.48}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 1639820968}
@@ -3192,7 +3263,7 @@ PrefabInstance:
     - target: {fileID: 512100202905812735, guid: 35f34ed9401cbc844bf61e58b67b6ce1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 375
+      value: 465
       objectReference: {fileID: 0}
     - target: {fileID: 512100202905812735, guid: 35f34ed9401cbc844bf61e58b67b6ce1,
         type: 3}
