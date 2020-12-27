@@ -56,7 +56,7 @@ class UnityHandler:
     def __start_listening(self):
         print("will start listening")
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        # reuse: self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         server_address = ('', self.port)
         print('starting up on \'{}\' port {}'.format(*server_address))
         self.sock.bind(server_address)
