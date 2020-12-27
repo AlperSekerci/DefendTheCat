@@ -114,4 +114,13 @@ public class QiskitHandler : MonoBehaviour
     {
         socket.Receive(receiveBuffer);        
     }
+
+    private void OnApplicationQuit()
+    {
+        if (socket != null && socket.Connected)
+        {
+            socket.Shutdown(SocketShutdown.Both);
+            socket.Close();
+        }
+    }
 }

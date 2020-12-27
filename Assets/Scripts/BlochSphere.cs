@@ -29,7 +29,7 @@ public class BlochSphere : MonoBehaviour
 
     private void Update()
     {
-        if (rotationOn) transform.Rotate(0, rotateSpeed * Time.deltaTime, 0);
+        if (rotationOn) transform.Rotate(0, rotateSpeed * Time.deltaTime, 0);        
     }
 
     public void Reset()
@@ -41,18 +41,16 @@ public class BlochSphere : MonoBehaviour
 
     // Source: http://www.vcpc.univie.ac.at/~ian/hotlist/qc/talks/bloch-sphere.pdf
     public void UpdatePoint()    
-    {
-        //theta = Mathf.Clamp(theta, 0, Mathf.PI);
-        //phi = Mathf.Clamp(phi, 0, PI2);
-        Vector3 point = SphericalCoordToRect(theta, phi);
+    {   
+        Vector3 point = SphericalCoordToRect(theta, phi);        
         pointTM.localPosition = point / transform.localScale.x;
     }
 
-    // Source: https://blog.nobel-joergensen.com/2010/10/22/spherical-coordinates-in-unity/#:~:text=Spherical%20coordinate%20system%20is%20an,the%20origin%20to%20the%20point
     private Vector3 SphericalCoordToRect(float theta, float phi)
     {
-        float a = Mathf.Cos(phi);      
-        return new Vector3(a * Mathf.Sin(theta), a * Mathf.Cos(theta), Mathf.Sin(phi));
+        float thetaDeg = Mathf.Rad2Deg * theta;
+        float phiDeg = Mathf.Rad2Deg * phi;
+        return Quaternion.Euler(0, -phiDeg, -thetaDeg) * Vector3.up;
     }
 
     public void OnClick()
